@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Meta tags Obrigatórias -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<title>Pesquisa de títulos</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+	<header>
+		<!-- Imagem e texto -->
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<a class="navbar-brand" href="#"> <img
+				src="/images/iconfinder_system-config-soundcard_6696.png" width="30"
+				height="30" class="d-inline-block align-top" alt=""> Jopaulo
+				System
+			</a>
+		</nav>
+	</header>
+
+	<!-- Começa o conteúdo da página -->
+	<main role="main" class="container">
+		<div class="card">
+			<h5 class="card-header">Pesquisa de títulos</h5>
+			<div class="card-body">
+				<form method="post" action="/titulos">
+					<!--alerta -->
+					<!-- 					<div class="alert alert-success alert-dismissible fade show" role="alert" -->
+					<!-- 						th:if="${!#strings.isEmpty(mensagem)}"> -->
+					<!-- 						Título salvo com sucesso! -->
+					<!-- 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+					<!-- 							<span aria-hidden="true">&times;</span> -->
+					<!-- 						</button> -->
+					<!-- 					</div> -->
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Descrição</th>
+								<th scope="col">Data de vencimento</th>
+								<th scope="col">Valor</th>
+								<th scope="col">Status</th>
+								<th scope="col">Opções</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>Academia aot 6302</td>
+								<td>02/01/2020</td>
+								<td>R$ 350,50</td>
+								<td>Pago</td>
+								<td>Deletar</td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+								<td>@mdo</td>
+								<td>Pago</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>Larry</td>
+								<td>the Bird</td>
+								<td>@twitter</td>
+								<td>@mdo</td>
+								<td>Pago</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</main>
+
+	<!-- JavaScript (Opcional) -->
+	<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+</body>
+</html>
