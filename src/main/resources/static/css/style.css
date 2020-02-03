@@ -3,3 +3,7 @@
 .container{
 	padding-top: 80px;
 }
+.link-panel{
+	float: right;
+	margin-right: 15px;
+}

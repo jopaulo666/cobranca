@@ -31,18 +31,12 @@
 	<!-- Começa o conteúdo da página -->
 	<main role="main" class="container">
 		<div class="card">
-			<h5 class="card-header">Pesquisa de títulos</h5>
+			<div class="clearfix">
+				<h5 class="card-header titulo-panel">Pesquisa de títulos</h5>
+				<a href="/titulos/novo" class="btn btn-link link-panel">Novo título</a>
+			</div>
 			<div class="card-body">
 				<form method="post" action="/titulos">
-					<!--alerta -->
-					<!-- 					<div class="alert alert-success alert-dismissible fade show" role="alert" -->
-					<!-- 						th:if="${!#strings.isEmpty(mensagem)}"> -->
-					<!-- 						Título salvo com sucesso! -->
-					<!-- 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
-					<!-- 							<span aria-hidden="true">&times;</span> -->
-					<!-- 						</button> -->
-					<!-- 					</div> -->
-
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -55,29 +49,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Academia aot 6302</td>
-								<td>02/01/2020</td>
-								<td>R$ 350,50</td>
-								<td>Pago</td>
-								<td>Deletar</td>
+							<tr th:each="titulo : ${titulos}">
+								<td th:text="${titulo.id}"></td>
+								<td th:text="${titulo.descricao}"></td>
+								<td th:text="${{titulo.vencimento}}"></td>
+								<td th:text="|R$ ${{titulo.valor}}|"></td>
+								<td>
+									<span class="badge" th:text="${titulo.status.descricao}"
+										th:classappend="${titulo.pendente ? 'badge-danger' : 'badge-success'}">
+									</span>
+								</td>
+								<td>X X</td>
 							</tr>
 							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td>@mdo</td>
-								<td>Pago</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-								<td>@mdo</td>
-								<td>Pago</td>
+								<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum título encontrado</td>
 							</tr>
 						</tbody>
 					</table>
