@@ -45,7 +45,7 @@
 								<th scope="col">Data de vencimento</th>
 								<th scope="col">Valor</th>
 								<th scope="col">Status</th>
-								<th scope="col">Opções</th>
+								<th scope="col" class="text-center">Opções</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -59,7 +59,12 @@
 										th:classappend="${titulo.pendente ? 'badge-danger' : 'badge-success'}">
 									</span>
 								</td>
-								<td>X X X</td>
+								<td>
+									<a th:href="@{/titulos/{id}(id=${titulo.id})}">
+										<button type="button" class="btn btn-outline-warning btn-sm">Editar</button>
+									</a>
+									<button type="button" class="btn btn-outline-danger btn-sm">Excluir</button>
+								</td>
 							</tr>
 							<tr>
 								<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum título encontrado</td>
