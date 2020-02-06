@@ -5,10 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jopaulo.socialbooks.model.StatusTitulo;
 import com.jopaulo.socialbooks.model.Titulo;
@@ -24,15 +27,18 @@ public class TituloController {
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		ModelAndView view = new ModelAndView("CadastroTitulo");
+		view.addObject(new Titulo());
 		return view;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(Titulo titulo) {
+	public String salvar(@Validated Titulo titulo, Errors errors, RedirectAttributes attributes) {
+		if (errors.hasErrors()) {
+			return "CadastroTitulo";
+		}
 		titulos.save(titulo);
-		ModelAndView view = new ModelAndView("CadastroTitulo");
-		view.addObject("mensagem", "...");
-		return view;
+		attributes.addFlashAttribute("mensagem", "...");
+		return "redirect:/titulos/novo";
 	}
 	
 	@RequestMapping

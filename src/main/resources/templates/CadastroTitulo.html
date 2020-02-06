@@ -37,8 +37,8 @@
 				<a href="/titulos" class="btn btn-link link-panel">Pesquisa de títulos</a>
 			</div>
 			<div class="card-body">
-				<form method="post" action="/titulos">
-					<!--alerta -->
+				<form method="post" action="/titulos" th:object="${titulo}">
+					<!--alerta sucesso-->
 					<div class="alert alert-success alert-dismissible fade show" role="alert"
 						th:if="${!#strings.isEmpty(mensagem)}">
 						Título salvo com sucesso!
@@ -46,26 +46,35 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
+					<!--alerta erro -->
+					<div class="alert alert-danger alert-dismissible fade show" role="alert"
+						th:if="${#fields.hasAnyErrors()}">
+<!-- 						Erro ao salvar título! -->
+						<div th:each="detailedError :${#fields.detailedErrors()}" th:text="${detailedError.message}">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="descricao"
-								placeholder="Descrição" name="descricao">
+								placeholder="Descrição" th:field="*{descricao}">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="vencimento" class="col-sm-2 col-form-label">Data
-							de vencimento</label>
+						<label for="vencimento" class="col-sm-2 col-form-label">Data de vencimento</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" id="vencimento"
-								placeholder="Data vencimento" name="vencimento">
+								placeholder="Data vencimento" th:field="*{vencimento}">
 						</div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row" th:classappend="${#fields.hasErrors('valor')} ? alert-danger">
 						<label for="valor" class="col-sm-2 col-form-label">Valor</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" id="valor"
-								placeholder="Valor" name="valor">
+								placeholder="Valor" th:field="*{valor}">
 						</div>
 					</div>
 					<div class="form-group row">
